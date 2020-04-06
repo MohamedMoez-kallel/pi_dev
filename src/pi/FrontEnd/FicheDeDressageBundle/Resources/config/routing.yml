@@ -1,0 +1,34 @@
+front_end_about:
+    path:     /about
+    defaults: { _controller: FicheDeDressageBundle:Default:about }
+
+
+front_end_gallery:
+    path:     /gallery
+    defaults: { _controller: FicheDeDressageBundle:Default:gallery }
+
+
+
+front_end_contact:
+    path:     /contact
+    defaults: { _controller: FicheDeDressageBundle:Default:contact }
+
+front_end_homepage:
+    path:     /index
+    defaults: { _controller: FicheDeDressageBundle:Default:index }
+
+
+
+
+front_end_dress:
+    path:     /dresseur
+    defaults: { _controller: FicheDeDressageBundle:Default:dress }
+
+
+front_end_show_dres:
+    path:     /dresseur/{id}
+    defaults: { _controller: FicheDeDressageBundle:Default:showDress }
+
+imprimer:
+    path:     /imprimer/{id}
+    defaults: { _controller: FicheDeDressageBundle:f_dressage:imprimer }

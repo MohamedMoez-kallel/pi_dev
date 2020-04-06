@@ -1,0 +1,47 @@
+{% extends ":FrontEnd:base.html.twig" %}
+{% block stylesheets %}
+    <style>
+    body{background: url("https://fac.img.pmdstatic.net/fit/http.3A.2F.2Fwww.2Efemmeactuelle.2Efr.2Fvar.2Ffemmeactuelle.2Fstorage.2Fimages.2Factu.2Fnews-actu.2Fjob-de-reve-devenez-calineur-pour-chats-39705.2F14560357-1-fre-FR.2Fjob-de-reve-une-clinique-veterinaire-recherche-un-calineur-pour-chats.2Ejpg/748x372/quality/80/crop-from/center/job-de-reve-une-clinique-veterinaire-recherche-un-calineur-pour-chats.jpeg")
+    no-repeat;}
+    </style>
+{% endblock %}
+{% block body %}
+
+        <div class="container" >
+            <h3 class="agileits-title w3title2">Création Fiche De Soin </h3>
+
+            <div class="row">
+
+                {{ form_start(form, {'attr': {'class': 'form'}}) }}
+           <div class="form-group">
+               <label for="observation">Observation</label>
+              {{ form_widget(form.observation, {'attr': {'class': 'form-control','placeholder':'Observation','name':'observation'}}) }}
+           </div>
+                <div class="form-group date">
+                    {{ form_label(form.prochainRDV ) }}
+                    {{ form_widget(form.prochainRDV ,{'attr': {'class':'form-control datepicker'}}) }}
+
+                </div>
+
+                <div class="form-group">
+                        {{ form_label(form.idAnimal ) }}
+                        {{ form_widget(form.idAnimal , {'attr': {'class':'form-control'}})  }}
+                </div>
+
+                <div class="form-group">
+                        {{ form_label(form.medicament ) }}
+                    <div class="input-group">
+                        <span class="input-group-addon">@</span>
+                        {{ form_widget(form.medicament, {'attr': {'placeholder': 'Medicament ','class':'form-control'}})  }}
+                    </div>
+                </div>
+                <div class="form-group">
+                        <input type="submit" value="Add" class=" btn-primary btn-lg btn-block"/>
+                </div>
+
+                {{ form_end(form) }}
+            </div>
+        </div>
+
+{% endblock %}
+

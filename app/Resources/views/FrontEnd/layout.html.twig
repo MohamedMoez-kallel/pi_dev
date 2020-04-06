@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="keywords" content="Best Pets Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
+	SmartPhone Compatible web template, free WebDesigns for Nokia, Samsung, LG, Sony Ericsson, Motorola web design" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
+    <!-- Custom Theme files -->
+    <link href="{{ asset('FrontEnd/css/bootstrap.css') }}" type="text/css" rel="stylesheet" media="all">
+    <link href="{{ asset('FrontEnd/css/style.css') }}" type="text/css" rel="stylesheet" media="all">
+    <link href="{{ asset('FrontEnd/css/font-awesome.css') }}" rel="stylesheet"> <!-- font-awesome icons -->
+    <link rel="stylesheet" href="{{ asset('FrontEnd/css/flexslider.css') }}" type="text/css" media="screen" property="" />
+    <!-- //Custom Theme files -->
+    <!-- web-fonts -->
+    <link href="//fonts.googleapis.com/css?family=Lato:100,100i,300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
+    <link href="//fonts.googleapis.com/css?family=Dosis:200,300,400,500,600,700,800" rel="stylesheet">
+    <!-- //web-fonts -->
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+</head>
+<body>
+
+
+<!-- banner -->
+{% include ':FrontEnd:banner.html.twig' %}
+<!-- //banner -->
+
+
+
+<!-- banner-bottom -->
+{% include ':FrontEnd:banner-bottom.html.twig' %}
+<!-- //banner-bottom -->
+
+
+<!-- welcome -->
+{% include ':FrontEnd:welcome.html.twig' %}
+<!-- //welcome -->
+
+
+<!-- services -->
+{% include ':FrontEnd:services.html.twig' %}
+<!-- //services -->
+
+
+<!-- blog-bottom -->
+{% include ':FrontEnd:blog-bottom.html.twig' %}
+<!-- //blog-bottom -->
+
+
+<!-- news letter -->
+{% include ':FrontEnd:news-letter.html.twig' %}
+<!-- //news letter -->
+
+
+<!-- footer -->
+{% include ':FrontEnd:footer.html.twig' %}
+<!-- //footer -->
+
+
+<!-- modal-about -->
+{% include ':FrontEnd:model-about.html.twig' %}
+<!-- //modal-about -->
+
+
+<!-- modal sign in  -->
+{% include ':FrontEnd:modal-sign-in.html.twig' %}
+<!-- //modal sign in  -->
+
+
+{% block body %}{% endblock %}
+
+<!-- js -->
+
+{% block javascripts %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,193 @@
+{% extends ':FrontEnd:base.html.twig' %}
+
+{% block body %}
+    <div class="container target">
+
+<br>
+        <br>
+        <div class="container" >
+            <h3 class="agileits-title w3title2">Offre Petiteur</h3>
+        </div>
+    </div>
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+        <link rel="stylesheet" href="{{ asset('BackEnd/plugins/iCheck/square/blue.css') }}">
+        {#<link rel="stylesheet" href="{{ asset('BackEnd/bower_components/bootstrap/dist/css/bootstrap.min.css') }}">#}
+        <link rel="stylesheet" href="{{ asset('BackEnd/bower_components/font-awesome/css/font-awesome.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/bower_components/Ionicons/css/ionicons.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/dist/css/AdminLTE.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/dist/css/skins/_all-skins.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/bower_components/morris.js/morris.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/bower_components/jvectormap/jquery-jvectormap.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/bower_components/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/bower_components/bootstrap-daterangepicker/daterangepicker.css') }}">
+        <link rel="stylesheet" href="{{ asset('BackEnd/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css') }}">
+
+
+
+
+
+
+
+        {#<script src="{{ asset('BackEnd/bower_components/jquery/dist/jquery.min.js') }}"></script>#}
+        <script src="{{ asset('BackEnd/bower_components/bootstrap/dist/js/bootstrap.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/plugins/iCheck/icheck.min.js') }}"></script>
+        <script>
+            $(function () {
+                $('input').iCheck({
+                    checkboxClass: 'icheckbox_square-blue',
+                    radioClass: 'iradio_square-blue',
+                    increaseArea: '20%' /* optional */
+                });
+            });
+        </script>
+
+        <script src="{{ asset('BackEnd/bower_components/jquery-ui/jquery-ui.min.js') }}"></script>
+        <script>
+            $.widget.bridge('uibutton', $.ui.button);
+        </script>
+        <script src="{{ asset('BackEnd/bower_components/raphael/raphael.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/bower_components/morris.js/morris.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/bower_components/jquery-sparkline/dist/jquery.sparkline.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/plugins/jvectormap/jquery-jvectormap-world-mill-en.js') }}"></script>
+        <script src="{{ asset('BackEnd/bower_components/jquery-knob/dist/jquery.knob.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/bower_components/moment/min/moment.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/bower_components/bootstrap-daterangepicker/daterangepicker.js') }}"></script>
+        <script src="{{ asset('BackEnd/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/bower_components/jquery-slimscroll/jquery.slimscroll.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/bower_components/fastclick/lib/fastclick.js') }}"></script>
+        <script src="{{ asset('BackEnd/dist/js/adminlte.min.js') }}"></script>
+        <script src="{{ asset('BackEnd/dist/js/pages/dashboard.js') }}"></script>
+        <script src="{{ asset('BackEnd/dist/js/demo.js') }}"></script>
+
+
+    </head>
+
+
+
+
+    <div class="blog-bottom">
+        <div class="container">
+            <div class="col-sm-7 w3_agile_blog_bottom_right">
+                <h3>pseudo : {{ offrePetiteur.idMembre }}</h3>
+                {#<h5>Adress : {{ vet.adresse }}</h5>#}
+                <h5>adresse : {{ offrePetiteur.idMembre.adresse }}</h5>
+                <h5>tel :{{ offrePetiteur.idMembre.NumTel }}</h5>
+                <h5>race des animal qu'il peux garder :{{ offrePetiteur.race }}</h5>
+<h4>Description ;</h4>
+                <p>{{ offrePetiteur.description }}</p>
+
+
+            </div>
+            <div class="col-sm-5 w3_agile_blog_bottom_left">
+                {% if offrePetiteur.idMembre.image==null %}
+                <img title="profile image" class="img-responsive" src="{{asset('profile.png')}}">
+                {% else %}
+
+                <img src="{{ asset('uploads/images/' ~ offrePetiteur.idMembre.image) }}" alt="" class="img-responsive">
+                {% endif %}
+            </div>
+
+            <div class="clearfix"> </div>
+
+
+
+        </div>
+    </div>
+    {{ form_start(form) }}
+        <ul>
+
+            <li>
+                <a href="{{ path('reclamation_newOffre',{ 'id':offrePetiteur.id } ) }}">ajouter  une reclamation</a>
+            </li>
+            <li>
+                <a href="{{ path('offrepetiteur_index') }}">retour au liste</a>
+            </li>
+            <li><a href="{{ path('demandegard_new',{'id': offrePetiteur.id}) }}"><button class="btn-primary">Envoyer Demande</button></a></li>
+
+        </ul>
+    <div class="container">
+        <h1>Commentaire et note </h1>
+
+        <div class="row">
+            <div class="col-md-10">
+                <!-- Box Comment -->
+                <div class="box box-widget">
+                    <div class="box-header with-border">
+                        <div class="user-block">
+                            <img class="img-circle" src="{{ asset('FrontEnd/images/s1.jpg') }}"  alt="User Image">
+                            <span class="username">{{ offrePetiteur.idMembre }}</span>
+                            {{ form_widget(form.note) }}
+                            <span class="description"></span>
+                        </div>
+
+                    </div>
+
+
+                               {% for c in rait %}
+                                            {% if c.commentaire!=null %}
+
+                                                <div class="box-footer box-comments">
+                                                    <div class="box-comment">
+                                                        <!-- User image -->
+
+                                                        <img class="img-circle img-sm"  src="{{ asset('FrontEnd/images/s1.jpg') }}"   alt="User Image">
+                                                        <div class="comment-text">
+                      <span class="username">
+                                      {{ c.idMembre }}
+
+                          <span class="text-muted pull-right">{{ c.datenote|date("M d,Y h:m") }}</span>
+                      </span>
+
+                                                            {% if c.commentaire!=null %}
+
+                                                                comentaire : {{ c.commentaire }} </br>
+                                                            {% endif %}
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            {% endif %}
+                                        {% endfor %}
+
+                                </div>
+
+                            </div>
+                        {#{% endif %}#}
+                    {#{% endfor %}#}
+                    <div class="box-footer">
+                        {% if is_granted("IS_AUTHENTICATED_REMEMBERED")and i==1%}
+
+                        <form action="#" method="post">
+
+                            <div class="img-push" data-width="500">
+                                {{ form_widget(form.commentaire, {'attr': {'placeholder': 'Press enter to post ',
+                                    'class':'form-control input-sm'}}) }}
+
+                            </div>
+                        </form>
+                    </div>
+                {{ form_widget(form.commentaire) }}
+                <input type="submit" value="notee" style="display: none">
+                {{ form_end(form) }}
+
+            {% endif %}
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+    <div class="map">
+        <iframe src="https://maps.google.com/maps?width=100%&height=600&hl=en&q=tunis+(pets)&ie=UTF8&t=&z=15&iwloc=B&output=embed" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+    </div>
+
+
+{% endblock %}

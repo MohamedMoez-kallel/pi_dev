@@ -1,0 +1,59 @@
+{% extends ':FrontEnd:base.html.twig' %}
+
+{% block body %}
+
+
+    <div class="team agileits">
+        <div class="team-agileinfo">
+            <div class="container">
+                <h3 class="agileits-title w3title2">Liste des Petiteur</h3>
+                <h4 class="agileits-icons-title">    Vous cherchez un endroit pour faire garder votre précieux compagnon (animal de compagnie) voici des offres de garderie.
+                </h4>
+                <div>
+                    <br>
+                    {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
+
+                         <a href="{{ path('demandegard_listdemandeUtilisateur') }}"> <button class="btn">voir vos demande</button></a>
+
+                    {% endif %}
+
+                    <br>
+                    <br>
+                </div>
+                <div class="team-row agileits-w3layouts">
+
+                    {% for offrePetiteur in offrePetiteurs %}
+
+                    <div class="col-sm-3 col-xs-6 team-grids">
+                        <div class="team-agileimg">
+                            {% if offrePetiteur.idMembre.image==null %}
+                                <img title="profile image" class="img-responsive" src="{{asset('profile.png')}}">
+                            {% else %}
+
+                                <img src="{{ asset('uploads/images/' ~ offrePetiteur.idMembre.image) }}" alt="" class="img-responsive">
+                            {% endif %}
+                            <div class="">
+                                <div class="">
+                                    <h4>Nom :{{ offrePetiteur.idMembre.username }}</h4>
+                                    <p><strong>les animals qu'il gardent: </strong> {{ offrePetiteur.race }}</p>
+                                    <p><strong>Lieu : </strong> {{ offrePetiteur.adresse }}
+                                    </p>
+                                </div>
+                                <div class="social-w3lsicon">
+                                    <a href="{{ path('offrepetiteur_show', { 'id': offrePetiteur.id }) }}"><button class="btn-primary">Consulter</button></a>
+                                    <a href="{{ path('demandegard_new',{'id': offrePetiteur.id}) }}"><button class="btn-primary">Envoyer Demande</button></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                    <div class="clearfix"> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+{% endblock %}
